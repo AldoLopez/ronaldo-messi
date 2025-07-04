@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="favicons/site.webmanifest">
     <title>Messi vs Ronaldo: The Ultimate Comparison</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -11,11 +15,11 @@
         :root {
             --messi-color: #75AADB; /* Argentina Light Blue */
             --ronaldo-color: #DA291C; /* Portugal Red */
-            --bg-color: #121212;
-            --card-color: #1e1e1e;
-            --text-color: #e0e0e0;
-            --header-color: #ffffff;
-            --border-color: #333;
+            --bg-color: #f4f4f4; /* Light Gray Background */
+            --card-color: #ffffff; /* White Card */
+            --text-color: #333333; /* Dark Text */
+            --header-color: #111111; /* Dark Header Text */
+            --border-color: #dddddd; /* Light Border */
             --winner-color: #4CAF50;
         }
 
@@ -40,7 +44,7 @@
         }
 
         header {
-            background: rgba(18, 18, 18, 0.8);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             color: var(--header-color);
             padding: 1rem 0;
@@ -69,7 +73,7 @@
             color: var(--text-color);
             text-decoration: none;
             font-weight: 700;
-            padding: 4px 4px; /* Increased padding */
+            padding: 4px 4px; /* Adjusted padding */
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
             cursor: pointer;
@@ -81,10 +85,10 @@
         }
         
         .secondary-nav {
-            background: #2a2a2a;
+            background: #e9e9e9;
             padding: 0.75rem 0;
             position: sticky;
-            top: 138px; /* Adjusted for header height */
+            top: 118px; /* Adjusted for header height */
             z-index: 999;
             border-bottom: 1px solid var(--border-color);
             display: none; /* Hidden by default */
@@ -123,6 +127,7 @@
             text-align: center;
             padding: 4rem 1rem;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1553775282-20af807797d1?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            color: #ffffff; /* White text on hero image */
         }
 
        .hero h2 {
@@ -138,11 +143,15 @@
         }
 
         section {
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border-color);
+            padding-top: 4rem;
         }
         
-        section:last-child {
+        .container > section {
+             padding-bottom: 4rem;
+             border-bottom: 1px solid var(--border-color);
+        }
+        
+        .container > section:last-of-type {
             border-bottom: none;
         }
 
@@ -158,7 +167,7 @@
             padding: 2rem;
             border-radius: 10px;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
        .card.animated {
@@ -188,14 +197,15 @@
        .stat-box {
             text-align: center;
             padding: 1.5rem;
-            background: #2a2a2a;
+            background: #fdfdfd;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
         }
 
        .stat-box h3 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
-            color: #aaa;
+            color: #777;
         }
 
        .stat-number {
@@ -234,11 +244,17 @@
             margin-right: 8px;
             border-radius: 3px;
         }
+        
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 1.5rem;
+            min-width: 600px; /* Prevents table from crushing on small screens */
         }
 
         th, td {
@@ -248,12 +264,12 @@
         }
 
         th {
-            background-color: #2a2a2a;
+            background-color: #f9f9f9;
             font-weight: 700;
         }
 
         tbody tr:hover {
-            background-color: #252525;
+            background-color: #fafafa;
         }
         
         td:nth-child(2) { font-weight: bold; color: var(--ronaldo-color); }
@@ -266,7 +282,7 @@
             position: relative;
             display: inline-block;
             cursor: help;
-            border-bottom: 1px dotted #aaa;
+            border-bottom: 1px dotted #777;
         }
 
         .tooltip-container .tooltip-text {
@@ -320,14 +336,14 @@
             padding: 2rem;
             margin-top: 2rem;
             font-size: 0.9rem;
-            color: #888;
+            color: #666;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
-            nav.main-nav ul li a { margin: 8px 0 15px 0; font-size: 0.9rem; }
-            .secondary-nav { top: 105px; /* Adjusted for smaller header */ }
+            nav.main-nav ul li a { padding: 8px 15px; font-size: 0.9rem; }
+            .secondary-nav { top: 125px; /* Adjusted for smaller header */ }
            .hero h2 { font-size: 2.5rem; }
            .section-title { font-size: 2rem; }
            .grid { grid-template-columns: 1fr; }
@@ -362,22 +378,24 @@
                     <div class="card">
                         <h3>Section 1: The Macro View: Career-Defining Statistics</h3>
                         <p>The most fundamental comparison begins with their total contributions in goals and assists over their entire senior careers for club and country. Cristiano Ronaldo stands as the most prolific goalscorer in the history of professional football, with 938 goals in over 1,281 appearances. Lionel Messi follows with 866 goals in over 1,109 appearances. However, the narrative shifts dramatically when assists are introduced. Messi holds a substantial lead, having provided 384 assists to Ronaldo's 257. This immediately establishes the primary archetypes: Ronaldo, the supreme goal-finisher, and Messi, the elite scorer-creator hybrid.</p>
-                        <table>
-                            <thead>
-                                <tr><th>Metric</th><th>Cristiano Ronaldo</th><th>Lionel Messi</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Total Appearances</td><td>1,281</td><td>1,109</td></tr>
-                                <tr><td>Total Goals</td><td>938</td><td>866</td></tr>
-                                <tr><td>Total Assists</td><td>257</td><td>384</td></tr>
-                                <tr><td>Mins Per Goal</td><td>111.6</td><td>105.1</td></tr>
-                                <tr><td>Mins Per Goal/Assist</td><td>87.6</td><td>72.8</td></tr>
-                                <tr><td>Hat-tricks</td><td>66</td><td>59</td></tr>
-                                <tr><td>Penalties Scored</td><td>175</td><td>110</td></tr>
-                                <tr><td>Free Kick Goals</td><td>64</td><td>68</td></tr>
-                                <tr><td>Headed Goals</td><td>155</td><td>28</td></tr>
-                            </tbody>
-                        </table>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr><th>Metric</th><th>Cristiano Ronaldo</th><th>Lionel Messi</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Total Appearances</td><td>1,281</td><td>1,109</td></tr>
+                                    <tr><td>Total Goals</td><td>938</td><td>866</td></tr>
+                                    <tr><td>Total Assists</td><td>257</td><td>384</td></tr>
+                                    <tr><td>Mins Per Goal</td><td>111.6</td><td>105.1</td></tr>
+                                    <tr><td>Mins Per Goal/Assist</td><td>87.6</td><td>72.8</td></tr>
+                                    <tr><td>Hat-tricks</td><td>66</td><td>59</td></tr>
+                                    <tr><td>Penalties Scored</td><td>175</td><td>110</td></tr>
+                                    <tr><td>Free Kick Goals</td><td>64</td><td>68</td></tr>
+                                    <tr><td>Headed Goals</td><td>155</td><td>28</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </section>
                 <section>
@@ -390,18 +408,20 @@
                     <div class="card">
                         <h3>Section 3: The Champions League: The Ultimate Proving Ground</h3>
                         <p>The UEFA Champions League is where legacies are forged. Ronaldo is the competition's all-time top scorer with 140 goals, and has won the title five times. Messi is second with 129 goals and four titles. A deeper look reveals Ronaldo's dominance in the high-stakes knockout rounds, scoring a record 67 goals. This has earned him the moniker "Mr. Champions League." However, in one-off finals across all competitions, Messi has been more impactful, with 35 goals and 15 assists in 49 finals, compared to Ronaldo's 24 goals and 2 assists in 39 finals.</p>
-                        <table>
-                            <thead>
-                                <tr><th>Stage</th><th>Cristiano Ronaldo</th><th>Lionel Messi</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Round of 16</td><td>25 Goals, 7 Assists</td><td>29 Goals, 6 Assists</td></tr>
-                                <tr><td>Quarter-Finals</td><td>25 Goals, 3 Assists</td><td>12 Goals, 6 Assists</td></tr>
-                                <tr><td>Semi-Finals</td><td>13 Goals, 4 Assists</td><td>6 Goals, 4 Assists</td></tr>
-                                <tr><td>Final</td><td>4 Goals, 1 Assist</td><td>2 Goals, 0 Assists</td></tr>
-                                <tr><td><strong>Total Knockouts</strong></td><td><strong>67 Goals, 15 Assists</strong></td><td><strong>49 Goals, 16 Assists</strong></td></tr>
-                            </tbody>
-                        </table>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr><th>Stage</th><th>Cristiano Ronaldo</th><th>Lionel Messi</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Round of 16</td><td>25 Goals, 7 Assists</td><td>29 Goals, 6 Assists</td></tr>
+                                    <tr><td>Quarter-Finals</td><td>25 Goals, 3 Assists</td><td>12 Goals, 6 Assists</td></tr>
+                                    <tr><td>Semi-Finals</td><td>13 Goals, 4 Assists</td><td>6 Goals, 4 Assists</td></tr>
+                                    <tr><td>Final</td><td>4 Goals, 1 Assist</td><td>2 Goals, 0 Assists</td></tr>
+                                    <tr><td><strong>Total Knockouts</strong></td><td><strong>67 Goals, 15 Assists</strong></td><td><strong>49 Goals, 16 Assists</strong></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </section>
                 <section>
@@ -414,17 +434,19 @@
                      <div class="card">
                         <h3>Section 5: The Direct Duel: Head-to-Head Encounters</h3>
                         <p>In 36 head-to-head matches, Messi's teams have the edge with 16 wins to Ronaldo's 11. The individual stats are even more telling. While the goal tallies are close (Messi 22, Ronaldo 21), the creative gap is immense. Messi provided 12 assists in these duels; Ronaldo provided just one. This underscores Messi's dual-threat capability in the biggest games against his greatest rival.</p>
-                        <table>
-                            <thead>
-                                <tr><th>Competition</th><th>Matches</th><th>Messi Wins</th><th>Ronaldo Wins</th><th>Draws</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>La Liga</td><td>18</td><td>10</td><td>4</td><td>4</td></tr>
-                                <tr><td>Champions League</td><td>6</td><td>2</td><td>2</td><td>2</td></tr>
-                                <tr><td>Copa del Rey</td><td>5</td><td>1</td><td>2</td><td>2</td></tr>
-                                <tr><td><strong>Total</strong></td><td><strong>36</strong></td><td><strong>16</strong></td><td><strong>11</strong></td><td><strong>9</strong></td></tr>
-                            </tbody>
-                        </table>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr><th>Competition</th><th>Matches</th><th>Messi Wins</th><th>Ronaldo Wins</th><th>Draws</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>La Liga</td><td>18</td><td>10</td><td>4</td><td>4</td></tr>
+                                    <tr><td>Champions League</td><td>6</td><td>2</td><td>2</td><td>2</td></tr>
+                                    <tr><td>Copa del Rey</td><td>5</td><td>1</td><td>2</td><td>2</td></tr>
+                                    <tr><td><strong>Total</strong></td><td><strong>36</strong></td><td><strong>16</strong></td><td><strong>11</strong></td><td><strong>9</strong></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </section>
                 <section>
@@ -485,48 +507,54 @@
                     <h2 class="section-title">Club Dominance</h2>
                     <div class="card animated">
                         <h3>Ronaldo's Club Journey</h3>
-                        <table>
-                            <thead>
-                                <tr><th>Club</th><th>Appearances</th><th>Goals</th><th>Assists</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Sporting CP</td><td>31</td><td>5</td><td>6</td></tr>
-                                <tr><td>Manchester United</td><td>346</td><td>145</td><td>64</td></tr>
-                                <tr><td>Real Madrid</td><td>438</td><td>450</td><td>131</td></tr>
-                                <tr><td>Juventus</td><td>134</td><td>101</td><td>22</td></tr>
-                                <tr><td>Al-Nassr</td><td>105</td><td>93</td><td>19</td></tr>
-                                <tr><td><strong>Total</strong></td><td><strong>1,054</strong></td><td><strong>794</strong></td><td><strong>242</strong></td></tr>
-                            </tbody>
-                        </table>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr><th>Club</th><th>Appearances</th><th>Goals</th><th>Assists</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Sporting CP</td><td>31</td><td>5</td><td>6</td></tr>
+                                    <tr><td>Manchester United</td><td>346</td><td>145</td><td>64</td></tr>
+                                    <tr><td>Real Madrid</td><td>438</td><td>450</td><td>131</td></tr>
+                                    <tr><td>Juventus</td><td>134</td><td>101</td><td>22</td></tr>
+                                    <tr><td>Al-Nassr</td><td>105</td><td>93</td><td>19</td></tr>
+                                    <tr><td><strong>Total</strong></td><td><strong>1,054</strong></td><td><strong>794</strong></td><td><strong>242</strong></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="card animated">
                         <h3>Messi's Club Journey</h3>
-                        <table>
-                            <thead>
-                                <tr><th>Club</th><th>Appearances</th><th>Goals</th><th>Assists</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Barcelona</td><td>778</td><td>672</td><td>303</td></tr>
-                                <tr><td>Paris Saint-Germain</td><td>75</td><td>32</td><td>35</td></tr>
-                                <tr><td>Inter Miami</td><td>63</td><td>50</td><td>24</td></tr>
-                                <tr><td><strong>Total</strong></td><td><strong>916</strong></td><td><strong>754</strong></td><td><strong>362<span class="winner-check"></span></strong></td></tr>
-                            </tbody>
-                        </table>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr><th>Club</th><th>Appearances</th><th>Goals</th><th>Assists</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Barcelona</td><td>778</td><td>672</td><td>303</td></tr>
+                                    <tr><td>Paris Saint-Germain</td><td>75</td><td>32</td><td>35</td></tr>
+                                    <tr><td>Inter Miami</td><td>63</td><td>50</td><td>24</td></tr>
+                                    <tr><td><strong>Total</strong></td><td><strong>916</strong></td><td><strong>754</strong></td><td><strong>362<span class="winner-check"></span></strong></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                      <div class="card animated">
                         <h3>Champions League Knockout Stages</h3>
-                        <table>
-                            <thead>
-                                <tr><th><span class="tooltip-container">Stage<span class="tooltip-text">Performance in the high-pressure knockout rounds of Europe's elite club competition.</span></span></th><th>Cristiano Ronaldo</th><th>Lionel Messi</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Round of 16</td><td>25 Goals, 7 Assists</td><td>29 Goals<span class="winner-check"></span>, 6 Assists</td></tr>
-                                <tr><td>Quarter-Finals</td><td>25 Goals<span class="winner-check"></span>, 3 Assists</td><td>12 Goals, 6 Assists</td></tr>
-                                <tr><td>Semi-Finals</td><td>13 Goals<span class="winner-check"></span>, 4 Assists</td><td>6 Goals, 4 Assists</td></tr>
-                                <tr><td>Final</td><td>4 Goals<span class="winner-check"></span>, 1 Assist</td><td>2 Goals, 0 Assists</td></tr>
-                                <tr><td><strong>Total</strong></td><td><strong>67 Goals<span class="winner-check"></span></strong>, 15 Assists</td><td>49 Goals, <strong>16 Assists<span class="winner-check"></span></strong></td></tr>
-                            </tbody>
-                        </table>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr><th><span class="tooltip-container">Stage<span class="tooltip-text">Performance in the high-pressure knockout rounds of Europe's elite club competition.</span></span></th><th>Cristiano Ronaldo</th><th>Lionel Messi</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Round of 16</td><td>25 Goals, 7 Assists</td><td>29 Goals<span class="winner-check"></span>, 6 Assists</td></tr>
+                                    <tr><td>Quarter-Finals</td><td>25 Goals<span class="winner-check"></span>, 3 Assists</td><td>12 Goals, 6 Assists</td></tr>
+                                    <tr><td>Semi-Finals</td><td>13 Goals<span class="winner-check"></span>, 4 Assists</td><td>6 Goals, 4 Assists</td></tr>
+                                    <tr><td>Final</td><td>4 Goals<span class="winner-check"></span>, 1 Assist</td><td>2 Goals, 0 Assists</td></tr>
+                                    <tr><td><strong>Total</strong></td><td><strong>67 Goals<span class="winner-check"></span></strong>, 15 Assists</td><td>49 Goals, <strong>16 Assists<span class="winner-check"></span></strong></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </section>
 
@@ -534,19 +562,21 @@
                     <h2 class="section-title">For the Flag</h2>
                     <div class="card animated">
                         <h3>International Careers</h3>
-                        <table>
-                            <thead>
-                                <tr><th><span class="tooltip-container">Statistic<span class="tooltip-text">Performance and success while representing their national teams, Portugal and Argentina.</span></span></th><th>Cristiano Ronaldo (Portugal)</th><th>Lionel Messi (Argentina)</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Appearances</td><td>221<span class="winner-check"></span></td><td>193</td></tr>
-                                <tr><td>Goals</td><td>138<span class="winner-check"></span></td><td>112</td></tr>
-                                <tr><td>Assists</td><td>37</td><td>58<span class="winner-check"></span></td></tr>
-                                <tr><td>Goals Per Game</td><td>0.62<span class="winner-check"></span></td><td>0.58</td></tr>
-                                <tr><td>Mins Per Goal/Assist</td><td>101</td><td>94<span class="winner-check"></span></td></tr>
-                                <tr><td>Major Trophies</td><td>2 (1 Euro, 1 Nations League)</td><td>4 (1 World Cup, 2 Copa América, 1 Finalissima)<span class="winner-check"></span></td></tr>
-                            </tbody>
-                        </table>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr><th><span class="tooltip-container">Statistic<span class="tooltip-text">Performance and success while representing their national teams, Portugal and Argentina.</span></span></th><th>Cristiano Ronaldo (Portugal)</th><th>Lionel Messi (Argentina)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Appearances</td><td>221<span class="winner-check"></span></td><td>193</td></tr>
+                                    <tr><td>Goals</td><td>138<span class="winner-check"></span></td><td>112</td></tr>
+                                    <tr><td>Assists</td><td>37</td><td>58<span class="winner-check"></span></td></tr>
+                                    <tr><td>Goals Per Game</td><td>0.62<span class="winner-check"></span></td><td>0.58</td></tr>
+                                    <tr><td>Mins Per Goal/Assist</td><td>101</td><td>94<span class="winner-check"></span></td></tr>
+                                    <tr><td>Major Trophies</td><td>2 (1 Euro, 1 Nations League)</td><td>4 (1 World Cup, 2 Copa América, 1 Finalissima)<span class="winner-check"></span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </section>
 
